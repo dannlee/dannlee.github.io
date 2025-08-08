@@ -1,0 +1,85 @@
+---
+layout: default
+title: 모든 포스트
+permalink: /posts/
+---
+
+<h1>모든 포스트</h1>
+
+<div class="post-archive">
+    {% assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+    {% for year in posts_by_year %}
+    <section class="year-section">
+        <h2>{{ year.name }}년</h2>
+        <ul class="post-list-archive">
+            {% for post in year.items %}
+            <li>
+                <time>{{ post.date | date: "%m월 %d일" }}</time>
+                <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+                {% if post.categories %}
+                <span class="categories">
+                    {% for category in post.categories %}
+                    <span class="category-small">{{ category }}</span>
+                    {% endfor %}
+                </span>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+    {% endfor %}
+</div>
+
+<style>
+.post-archive {
+    margin-top: 2rem;
+}
+
+.year-section {
+    margin-bottom: 3rem;
+}
+
+.year-section h2 {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.post-list-archive {
+    list-style: none;
+}
+
+.post-list-archive li {
+    padding: 0.8rem 0;
+    border-bottom: 1px solid var(--light-gray);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.post-list-archive time {
+    color: var(--gray);
+    font-size: 0.9rem;
+    min-width: 80px;
+}
+
+.post-list-archive a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.post-list-archive a:hover {
+    color: var(--primary-color);
+}
+
+.category-small {
+    font-size: 0.8rem;
+    padding: 0.2em 0.6em;
+    background: var(--light-gray);
+    color: var(--text-color);
+    border-radius: 15px;
+    margin-left: 0.3rem;
+}
+</style>

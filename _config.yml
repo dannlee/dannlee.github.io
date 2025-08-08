@@ -1,0 +1,30 @@
+# 사이트 설정
+title: 다야의 블로그
+description: 개발과 일상을 기록하는 공간
+author: 다야
+email: your-email@example.com
+url: "https://your-username.github.io" # 실제 GitHub 사용자명으로 변경하세요
+
+# 빌드 설정
+markdown: kramdown
+theme: minima # 기본 테마, 나중에 변경 가능
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# 포스트 설정
+permalink: /:year/:month/:day/:title/
+paginate: 10
+paginate_path: "/page/:num/"
+
+# 소셜 미디어 (선택사항)
+github_username: your-github-username
+twitter_username: your-twitter-username
+
+# 제외 파일
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - LICENSE

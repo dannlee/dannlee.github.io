@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>다야의 블로그</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="site-title"><a href="/">다야의 블로그</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="/">홈</a></li>
+                    <li><a href="/about">소개</a></li>
+                    <li><a href="/posts">포스트</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="hero">
+            <h2>안녕하세요, 다야입니다!</h2>
+            <p>개발과 일상을 기록하는 블로그입니다.</p>
+        </div>
+
+        <section class="recent-posts">
+            <h3>최근 포스트</h3>
+            <div class="post-list">
+                <!-- Jekyll이 여기에 포스트를 자동으로 추가합니다 -->
+                {% for post in site.posts limit:5 %}
+                <article class="post-preview">
+                    <h4><a href="{{ post.url }}">{{ post.title }}</a></h4>
+                    <time>{{ post.date | date: "%Y년 %m월 %d일" }}</time>
+                    <p>{{ post.excerpt | strip_html | truncate: 150 }}</p>
+                </article>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 다야. Built with Jekyll & GitHub Pages.</p>
+    </footer>
+</body>
+</html>
